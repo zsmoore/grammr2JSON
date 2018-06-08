@@ -1,0 +1,24 @@
+{
+  "name": "grammr2json",
+  "version": "0.0.1",
+  "description": "Transforming Formal Grammars into JSON",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsmoore/grammr2JSON.git"
+  },
+  "author": "Zachary Moore",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/zsmoore/grammr2JSON/issues"
+  },
+  "homepage": "https://github.com/zsmoore/grammr2JSON#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
