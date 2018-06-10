@@ -22,17 +22,6 @@ function parseArrow(input) {
     return out;
 }
 
-let testArrow = `expr→term +            expr
-expr→term
-term→term ∗    factor
-term→factor
-factor→( expr )
-factor→const
-const→integer`;
-
-//console.log(parseArrow(testArrow));
-
-// Must be seaparated by 2 new lines
 function parseBNF(input, multiline) {
     let out = {};
     input = input.trim();
@@ -49,37 +38,3 @@ function parseBNF(input, multiline) {
     });
     return out;
 }
-
-let testBNF = `   <coursecode>   ::= <acadunit> <coursenumber>
-<acadunit>     ::= <letter> <letter> <letter>
-<coursenumber> ::= <year> <semesters> <digit> <digit>
-<year>         ::= <ugrad> | <grad>
-<ugrad>        ::= 0 | 1 | 2 | 3 | 4
-<grad>         ::= 5 | 6 | 7 | 9
-<semesters>    ::= <onesemester> | <twosemesters>
-<onesemester>  ::= <frenchone> | <englishone> | <bilingual>
-<frenchone>    ::= 5 | 7
-<englishone>   ::= 1 | 3
-<bilingual>    ::= 9
-<twosemesters> ::= <frenchtwo> | <englishtwo>
-<frenchtwo>    ::= 6 | 8
-<englishtwo>   ::= 2 | 4
-<digit>        ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9`;
-
-let testBNF2 =  `<expr> ::= <term> "+" <expr>
-|  <term>
-
-
-
-
-<term> ::= <factor> "*" <term>
-|  <factor>
-
-<factor> ::= "(" <expr> ")"
-  |  <const>
-
-<const> ::= integer`;
-
-
-//console.log(parseBNF(testBNF, false));
-console.log(parseBNF(testBNF2, true));
