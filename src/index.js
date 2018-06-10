@@ -40,7 +40,3 @@ export function parseBNF(input, multiline) {
     });
     return out;
 }
-var test = `gram -> x + y
-            gram -> gram + z
-            test -> 5`;
-console.log(parseArrow(test));
