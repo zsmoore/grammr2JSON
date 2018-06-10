@@ -1,6 +1,6 @@
 {
   "name": "grammr2json",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Transforming Formal Grammars into JSON",
   "main": "./dist/index.js",
   "scripts": {
