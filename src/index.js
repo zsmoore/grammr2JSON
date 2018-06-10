@@ -1,11 +1,9 @@
-let removeWhiteSpace = sym => sym.replace(/\s/g, '');
-let removeSym = (sym, toRemove) => sym.replace(toRemove, '');
 let removeAllSyms = (sym, removeList) => {
     removeList.forEach(toRemove => {sym = sym.replace(new RegExp(toRemove, 'g'), '')});
     return sym;
 }
 
-function parseArrow(input) {    
+export function parseArrow(input) {    
     let out = {};
     input = input.trim();
     let newLine = input.split('\n');
@@ -22,7 +20,7 @@ function parseArrow(input) {
     return out;
 }
 
-function parseBNF(input, multiline) {
+export function parseBNF(input, multiline) {
     let out = {};
     input = input.trim();
     let productions = multiline ? input.split(/\n\n+/g) : input.split('\n');
