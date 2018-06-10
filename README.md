@@ -21,6 +21,9 @@ Sample Usage to parse this grammar:
 ``` javascript
 let out = parseArrow(arrowGram);
 ```
+Arrow can also parse rules that are using an arrow in the form of:  
+`->`
+
 
 ## BNF ##
 BNF can take 2 forms, rules on single line or multiline  
