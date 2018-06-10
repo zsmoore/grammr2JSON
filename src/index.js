@@ -7,7 +7,6 @@ export function parseArrow(input) {
     let out = {};
     input = input.trim();
     let newLine = input.split(/\n+/g);
-    console.log(newLine);
     newLine = newLine[0].indexOf('→') > 0 ? newLine.map(rule => rule.split('→'))
         : newLine.map(rule => rule.split('->'));
     newLine.forEach(rule => {
