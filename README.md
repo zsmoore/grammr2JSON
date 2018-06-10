@@ -28,6 +28,8 @@ Arrow can also parse rules that are using an arrow in the form of:
 ## BNF ##
 BNF can take 2 forms, rules on single line or multiline  
   
+2 Forms of parsing Options:
+FORMAL BNF
 Example Single Line:  
 ```javascript
 let testBNF = `   <coursecode>   ::= <acadunit> <coursenumber>
@@ -48,7 +50,7 @@ let testBNF = `   <coursecode>   ::= <acadunit> <coursenumber>
 ```
 Sample Usage to parse single Line:  
 ```javascript
-let out = parseBNF(testBNF, false);
+let out = parseFormalBNF(testBNF, false);
 ```
 Example Multiline:
 ```javascript  
@@ -66,8 +68,63 @@ let testBNF2 =  `<expr> ::= <term> "+" <expr>
 
 Sample Usage to parse Multiline
 ```javascript
-let out = parseBNF(testBNF2, true);
+let out = parseFormalBNF(testBNF2, true);
 ```  
+
+Informal BNF  
+This is an example using the JSON grammar  
+```javascript  
+const rawJsonGrammar = `object ::= { }
+| { members }
+
+members ::= pair
+| pair , members
+
+pair ::= string : value
+
+array ::= []
+| [ elements ]
+
+elements ::= value
+| value , elements
+
+value ::= string
+| number
+| object
+| array
+| true
+| false
+| null
+
+string ::= " "
+| " chars "
+
+chars ::=  char
+| char chars
+
+number ::= int
+| int frac
+| int exp
+| int frac exp
+
+int ::= digit
+| digit1-9 digits
+| - digit
+| - digit1-9 digits
+
+frac ::= . digits
+
+exp ::= e digits
+
+digits ::= digit
+| digit digits`;
+```
+
+Sample usage:  
+```javascript
+let out = parseInformalBNF(rawJsonGrammar, true);
+```  
+
 # General Caveats  
  - Terms to the right of arrow/expandsto must be separated by spaced 
  

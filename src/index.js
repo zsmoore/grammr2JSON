@@ -23,7 +23,7 @@ export function parseArrow(input) {
     return out;
 }
 
-export function parseBNF(input, multiline) {
+export function parseFormalBNF(input, multiline) {
     let out = {};
     input = input.trim();
     let productions = multiline ? input.split(/\n\n+/g) : input.split('\n');
@@ -35,6 +35,21 @@ export function parseBNF(input, multiline) {
         let rest = prod[1].split('|');
         let badSymbols = ['<', '>', '"'];        
         rest = rest.map(toChange => removeAllSyms(toChange, badSymbols));
+        rest = rest.map(word => word.trim().split(/\ +/).map(inner => inner.trim()));
+        out[ruleName] = rest;        
+    });
+    return out;
+}
+
+export function parseInformalBNF(input, multiline) {
+    let out = {};
+    input = input.trim();
+    let productions = multiline ? input.split(/\n\n+/g) : input.split('\n');
+    productions = productions.map(prod => prod.split('::='));
+    productions.forEach(prod => {
+        let ruleName = prod[0];
+        ruleName = ruleName.trim();    
+        let rest = prod[1].split('|');               
         rest = rest.map(word => word.trim().split(/\ +/).map(inner => inner.trim()));
         out[ruleName] = rest;        
     });
