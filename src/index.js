@@ -6,8 +6,10 @@ let removeAllSyms = (sym, removeList) => {
 export function parseArrow(input) {    
     let out = {};
     input = input.trim();
-    let newLine = input.split('\n');
-    newLine = newLine.map(rule => rule.split('→'));
+    let newLine = input.split('/\n+/g');
+
+    newLine = newLine[0].indexOf('→') ? newLine.map(rule => rule.split('→'))
+        : newLine.map(rule => rule.split('->'));
     newLine.forEach(rule => {
         let ruleName = rule[0];
         let rest = rule[1].split(/ +/).map(word => word.trim());        
